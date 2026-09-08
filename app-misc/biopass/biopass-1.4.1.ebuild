@@ -7,7 +7,7 @@ inherit unpacker
 
 DESCRIPTION="Aplicación biopass instalada desde paquete binario"
 HOMEPAGE="https://github.com/TickLabVN/biopass/"
-SRC_URI="biopass_1.4.1_amd64.deb"
+SRC_URI="https://github.com/TickLabVN/biopass/releases/download/1.4.1/biopass_1.4.1_amd64.deb"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
