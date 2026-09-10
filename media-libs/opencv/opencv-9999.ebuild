@@ -18,12 +18,13 @@ fi
 
 LICENSE="Apache-2.0"
 SLOT="0/5"
-IUSE="cuda ffmpeg python qt6 v4l"
+IUSE="cuda ffmpeg onnx python qt6 v4l"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
 	dev-libs/protobuf:=
 	ffmpeg? ( media-video/ffmpeg:= )
+	onnx? ( sci-libs/onnxruntime:= )
 	python? ( ${PYTHON_DEPS} )
 	qt6? ( dev-qt/qtbase:6[gui,widgets] )
 	v4l? ( media-libs/libv4l )
@@ -60,6 +61,7 @@ src_configure() {
 		-DWITH_FFMPEG=$(usex ffmpeg)
 		-DWITH_V4L=$(usex v4l)
 		-DWITH_CUDA=$(usex cuda)
+		-DWITH_ONNXRUNTIME=$(usex onnx)
 		-DWITH_PYTHON=$(usex python)
 		-DWITH_QT=$(usex qt6 6 OFF)
 		-DOPENCV_GENERATE_PKGCONFIG=ON
