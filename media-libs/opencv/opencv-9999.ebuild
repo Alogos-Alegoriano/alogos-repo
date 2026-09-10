@@ -38,6 +38,17 @@ pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
 
+src_prepare() {
+	cmake_src_prepare
+
+	einfo "Forzando nivel de log SILENT en el código fuente"
+	sed -i -e 's/#define CV_LOG_STRIP_LEVEL.*/#define CV_LOG_STRIP_LEVEL CV_LOG_LEVEL_SILENT/g' \
+		modules/core/include/opencv2/core/utils/logger.defines.hpp || die "Fallo al parchear logger.defines.hpp"
+
+	sed -i -e 's/#define OPENCV_LOG_LEVEL_DEFAULT.*/#define OPENCV_LOG_LEVEL_DEFAULT CV_LOG_LEVEL_SILENT/g' \
+		modules/core/include/opencv2/core/utils/logger.defines.hpp || die "Fallo al parchear el log por defecto"
+}
+
 src_configure() {
 	append-cppflags -DOPENCV_LOG_LEVEL_DEFAULT=0 -DCV_LOG_STRIP_LEVEL=0
 
