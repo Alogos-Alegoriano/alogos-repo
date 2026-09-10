@@ -41,12 +41,13 @@ pkg_setup() {
 src_prepare() {
 	cmake_src_prepare
 
-	einfo "Forzando nivel de log SILENT en el código fuente"
-	sed -i -e 's/#define CV_LOG_STRIP_LEVEL.*/#define CV_LOG_STRIP_LEVEL CV_LOG_LEVEL_SILENT/g' \
-		modules/core/include/opencv2/core/utils/logger.defines.hpp || die "Fallo al parchear logger.defines.hpp"
+	einfo "Ajustando macros de silencio en el código fuente de OpenCV"
+	
+	sed -i -e 's/#define CV_LOG_STRIP_LEVEL.*/#define CV_LOG_STRIP_LEVEL 100/g' \
+		modules/core/include/opencv2/core/utils/logger.defines.hpp || die "Error al modificar CV_LOG_STRIP_LEVEL"
 
 	sed -i -e 's/#define OPENCV_LOG_LEVEL_DEFAULT.*/#define OPENCV_LOG_LEVEL_DEFAULT CV_LOG_LEVEL_SILENT/g' \
-		modules/core/include/opencv2/core/utils/logger.defines.hpp || die "Fallo al parchear el log por defecto"
+		modules/core/include/opencv2/core/utils/logger.defines.hpp || die "Error al modificar OPENCV_LOG_LEVEL_DEFAULT"
 }
 
 src_configure() {
@@ -62,6 +63,7 @@ src_configure() {
 		-DWITH_PYTHON=$(usex python)
 		-DWITH_QT=$(usex qt6 6 OFF)
 		-DOPENCV_GENERATE_PKGCONFIG=ON
+		-DOPENCV_LOG_LEVEL=SILENT
 	)
 
 	cmake_src_configure
