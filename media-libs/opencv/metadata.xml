@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>alogosalegoriano@gmail.com</email>
+		<name>Alogos</name>
+	</maintainer>
+	<use>
+		<flag name="contrib">nose</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">opencv/opencv</remote-id>
+	</upstream>
+</pkgmetadata>
