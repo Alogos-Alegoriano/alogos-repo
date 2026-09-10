@@ -4,7 +4,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_{10..15} )
-inherit cmake git-r3 python-single-r1
+inherit cmake flag-o-matic git-r3 python-single-r1
 
 DESCRIPTION="Open Source Computer Vision Library"
 HOMEPAGE="https://opencv.org https://github.com/opencv/opencv"
@@ -39,6 +39,8 @@ pkg_setup() {
 }
 
 src_configure() {
+	append-cppflags -DOPENCV_LOG_LEVEL_DEFAULT=0 -DCV_LOG_STRIP_LEVEL=0
+
 	local mycmakeargs=(
 		-DBUILD_EXAMPLES=OFF
 		-DBUILD_TESTS=OFF
@@ -49,8 +51,6 @@ src_configure() {
 		-DWITH_PYTHON=$(usex python)
 		-DWITH_QT=$(usex qt6 6 OFF)
 		-DOPENCV_GENERATE_PKGCONFIG=ON
-		-DOPENCV_LOG_LEVEL=0
-		-DCV_LOG_STRIP_LEVEL=LOG_LEVEL_SILENT
 	)
 
 	cmake_src_configure
