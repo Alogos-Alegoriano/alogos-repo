@@ -49,7 +49,8 @@ src_configure() {
 		-DWITH_PYTHON=$(usex python)
 		-DWITH_QT=$(usex qt6 6 OFF)
 		-DOPENCV_GENERATE_PKGCONFIG=ON
-		-DOPENCV_LOG_LEVEL=OFF
+		-DOPENCV_LOG_LEVEL=0
+		-DCV_LOG_STRIP_LEVEL=LOG_LEVEL_SILENT
 	)
 
 	cmake_src_configure
