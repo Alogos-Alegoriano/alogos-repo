@@ -17,7 +17,7 @@ else
 fi
 
 LICENSE="Apache-2.0"
-SLOT="0/5"
+SLOT="live-opencv"
 IUSE="cuda ffmpeg onnx python qt6 v4l"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
