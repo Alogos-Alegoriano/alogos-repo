@@ -1,0 +1,13 @@
+BDEPEND=dev-build/cmake sys-devel/gettext app-alternatives/ninja >=dev-build/cmake-3.28.5 >=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=dev-libs/yyjson dev-libs/inih dev-libs/libevdev dev-libs/openssl:= media-libs/opencv:= sys-libs/pam
+DESCRIPTION=C++ rewrite of Howdy facial-recognition authentication on Linux
+EAPI=8
+HOMEPAGE=https://codeberg.org/nathawat/howdy-next
+INHERIT=cmake git-r3
+LICENSE=GPL-3
+PROPERTIES=live
+RDEPEND=dev-libs/yyjson dev-libs/inih dev-libs/libevdev dev-libs/openssl:= media-libs/opencv:= sys-libs/pam
+SLOT=0
+_eclasses_=toolchain-funcs	58a918e3a42d0156f010dcfd43725be5	flag-o-matic	fd3558f73f6503093adee69adf41020d	multiprocessing	45d0620f25c2f063ad6276ecd9ed9399	ninja-utils	d063ea1900a793f93eb095010d6d9156	xdg-utils	42869b3c8d86a70ef3cf75165a395e09	cmake	3530055400d05e64deaba3042af30af6	git-r3	e6c2f983e006e805160436c75a0c1562
+_md5_=d490315df12355947c7ac6f7f208d07f
